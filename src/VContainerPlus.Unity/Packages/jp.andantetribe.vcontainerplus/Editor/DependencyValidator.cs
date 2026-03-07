@@ -104,7 +104,15 @@ namespace VContainerPlus.Editor
 
             bool IContainerBuilder.Exists(Type type, bool includeInterfaceTypes, bool findParentScopes)
             {
-                throw new NotImplementedException();
+                foreach (var builder in _registrationBuilders)
+                {
+                    if (GetImplementationType(builder) == type ||
+                        includeInterfaceTypes && GetInterfaceTypes(builder)?.Contains(type) == true)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
 
             /// <summary>
@@ -119,6 +127,15 @@ namespace VContainerPlus.Editor
                     BindingFlags.Instance | BindingFlags.NonPublic
                 );
                 return (Type)field!.GetValue(builder);
+            }
+
+            static List<Type>? GetInterfaceTypes(RegistrationBuilder builder)
+            {
+                var field = typeof(RegistrationBuilder).GetField(
+                    "InterfaceTypes",
+                    BindingFlags.Instance | BindingFlags.NonPublic
+                );
+                return (List<Type>?)field!.GetValue(builder);
             }
         }
     }
