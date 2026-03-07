@@ -1,0 +1,19 @@
+{
+    "name": "VContainerPlus.Editor",
+    "rootNamespace": "VContainerPlus.Editor",
+    "references": [
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:b01c5972cc154374084c354c9a3f3680"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
